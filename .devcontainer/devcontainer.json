@@ -15,7 +15,9 @@
         "astro-build.astro-vscode",
         "GitHub.copilot",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "ms-vscode.makefile-tools",
+        "github.vscode-github-actions"
       ],
       "settings": {
         "editor.formatOnSave": true,
