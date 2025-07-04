@@ -16,6 +16,10 @@ build: ## プロジェクトをビルドする
 preview: ## ビルド済みプロジェクトをプレビューする
 	pnpm preview
 
+check: ## コードの静的解析と型チェックを行う
+	pnpm lint
+	pnpm tsc --noEmit
+
 clean: ## ビルド成果物とnode_modulesを削除する
 	rm -rf dist node_modules .astro
 
