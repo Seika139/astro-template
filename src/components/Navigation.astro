@@ -26,7 +26,7 @@ const { pathname } = Astro.url;
       {
         navItems.map((item) => (
           <a
-            href={item.href}
+            href={`${import.meta.env.BASE_URL}${item.href.slice(1)}`}
             class={pathname === item.href || pathname.startsWith(`${item.href}/`) ? 'active' : ''}
           >
             {item.text}
