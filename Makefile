@@ -10,6 +10,7 @@ dev: ## 開発サーバーを起動する
 	pnpm dev
 
 build: ## プロジェクトをビルドする
+	pnpm install
 	pnpm build
 
 preview: ## ビルド済みプロジェクトをプレビューする
