@@ -1,0 +1,57 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PortfolioHeader from '../components/portfolio/PortfolioHeader.astro';
+import ProjectCard from '../components/portfolio/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'Astroプロジェクトテンプレート',
+    description:
+      'メンテナンス性と拡張性に優れたAstroのWebサイトテンプレート。Docker、GitHub Actions、TypeScriptを活用した実用的なテンプレートです。',
+    imageUrl: '/images/project-astro.jpg',
+    githubUrl: 'https://github.com/yourusername/astro-template',
+    tags: ['Astro', 'TypeScript', 'Docker', 'GitHub Actions'],
+  },
+  {
+    title: 'ポートフォリオサイト',
+    description:
+      'あなたの作品やスキルを効果的に紹介するためのポートフォリオサイト。レスポンシブデザインで様々なデバイスに対応しています。',
+    imageUrl: '/images/project-portfolio.jpg',
+    projectUrl: 'https://portfolio.example.com',
+    tags: ['Astro', 'TypeScript', 'レスポンシブデザイン'],
+  },
+  {
+    title: 'ランディングページ',
+    description:
+      '製品やサービスを紹介するための高変換率のランディングページ。訪問者を効果的にコンバージョンに導きます。',
+    imageUrl: '/images/project-landing.jpg',
+    projectUrl: 'https://landing.example.com',
+    tags: ['Astro', 'TailwindCSS', 'マーケティング'],
+  },
+];
+---
+
+<MainLayout title="ポートフォリオ | Astroテンプレート">
+  <PortfolioHeader
+    title="ポートフォリオ"
+    subtitle="私が最近取り組んだプロジェクトのコレクションです。それぞれのプロジェクトは異なる技術スタックと設計上の課題を持っています。"
+  />
+
+  <div class="portfolio-grid">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </div>
+</MainLayout>
+
+<style>
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

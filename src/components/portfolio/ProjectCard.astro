@@ -1,0 +1,140 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  imageUrl?: string;
+  projectUrl?: string;
+  githubUrl?: string;
+  tags?: string[];
+}
+
+const { title, description, imageUrl, projectUrl, githubUrl, tags = [] } = Astro.props;
+---
+
+<div class="project-card">
+  {
+    imageUrl && (
+      <div class="project-image">
+        <img src={imageUrl} alt={`${title}のプレビュー画像`} />
+      </div>
+    )
+  }
+  <div class="project-content">
+    <h3 class="project-title">{title}</h3>
+
+    {
+      tags.length > 0 && (
+        <div class="project-tags">
+          {tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )
+    }
+
+    <p class="project-description">{description}</p>
+
+    <div class="project-links">
+      {
+        projectUrl && (
+          <a href={projectUrl} class="project-link" target="_blank" rel="noopener noreferrer">
+            プロジェクトを見る
+          </a>
+        )
+      }
+      {
+        githubUrl && (
+          <a href={githubUrl} class="project-link github" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .project-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    margin-bottom: 2rem;
+    background-color: white;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .project-content {
+    padding: 1.5rem;
+  }
+
+  .project-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background-color: #f1f1f1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .project-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #0077cc;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+
+  .project-link:hover {
+    background-color: #005fa3;
+  }
+
+  .project-link.github {
+    background-color: #333;
+  }
+
+  .project-link.github:hover {
+    background-color: #000;
+  }
+</style>

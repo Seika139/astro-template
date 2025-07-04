@@ -1,0 +1,5 @@
+{
+  "name": "Astro テンプレート",
+  "description": "Docker、TypeScript、GitHub Actions対応のAstroテンプレート（ブログ/ポートフォリオ/ランディングページ）",
+  "icon": "bolt"
+}

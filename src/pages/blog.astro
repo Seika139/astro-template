@@ -1,0 +1,157 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// すべてのブログ記事を取得して日付順にソート
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+// タグの一覧を取得
+const allTags = [...new Set(posts.map(post => post.data.tags).flat())].sort();
+---
+
+<MainLayout title="ブログ | ブログサイト" description="ブログ記事の一覧">
+  <section class="blog-page">
+    <div class="container">
+      <h1>ブログ</h1>
+      
+      <div class="blog-layout">
+        <div class="posts-container">
+          {sortedPosts.length > 0 ? (
+            sortedPosts.map(post => (
+              <BlogCard
+                title={post.data.title}
+                url={`/blog/${post.slug}`}
+                description={post.data.description}
+                date={post.data.pubDate}
+                tags={post.data.tags}
+              />
+            ))
+          ) : (
+            <p class="no-posts">記事がまだありません。もうしばらくお待ちください。</p>
+          )}
+        </div>
+        
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h2>タグ</h2>
+            <div class="tags-cloud">
+              {allTags.map(tag => (
+                <a href={`/tags/${tag.toLowerCase()}`} class="tag">
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <div class="sidebar-section">
+            <h2>このブログについて</h2>
+            <p>
+              Astroを使って構築された技術ブログです。
+              WebサイトのパフォーマンスとSEO最適化に焦点を当てたコンテンツを提供しています。
+            </p>
+            <a href="/about" class="more-link">詳細を見る &rarr;</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .blog-page {
+    margin: 2rem 0 4rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .blog-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+  }
+  
+  .posts-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .no-posts {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+  
+  .sidebar-section {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .sidebar-section h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    color: #0077cc;
+  }
+  
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    background-color: #eee;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  
+  .tag:hover {
+    background-color: #ddd;
+    text-decoration: none;
+  }
+  
+  .more-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 900px) {
+    .blog-layout {
+      grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+      position: static;
+    }
+  }
+</style>

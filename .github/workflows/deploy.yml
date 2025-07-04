@@ -1,0 +1,92 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-push-to-ghcr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,format=short
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-to-vps:
+    needs: build-and-push-to-ghcr
+    runs-on: ubuntu-latest
+    # VPS_SSHキー、VPS_HOST、VPS_USERNAMEが設定されていない場合はスキップ
+    if: ${{ secrets.VPS_SSH_KEY != '' && secrets.VPS_HOST != '' && secrets.VPS_USERNAME != '' }}
+
+    steps:
+      - name: Check for required secrets
+        run: |
+          echo "VPSへのデプロイを開始します"
+          echo "必要なSecrets設定の詳細は docs/07_github-setup.md を参照してください"
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to VPS
+        run: |
+          ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} "
+            # GitHub Container Registry へのログイン
+            echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            
+            # 新しいイメージのタグを設定
+            IMAGE_TAG=ghcr.io/${{ github.repository }}:$(echo ${{ github.sha }} | cut -c1-7)
+            
+            # 新しいイメージを取得
+            docker pull \${IMAGE_TAG}
+            
+            # 既存のコンテナがある場合は停止・削除
+            docker stop astro-website || true
+            docker rm astro-website || true
+            
+            # 新しいコンテナを起動（ローカルIPのみにバインド）
+            docker run -d --name astro-website -p 127.0.0.1:4321:4321 --restart=unless-stopped \${IMAGE_TAG}
+            
+            # 使われていない古いイメージを削除
+            docker system prune -af --filter 'label=org.opencontainers.image.source=https://github.com/${{ github.repository }}' --filter 'until=24h'
+          "

@@ -1,0 +1,67 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/landing/Hero.astro';
+import Features from '../components/landing/Features.astro';
+import CallToAction from '../components/landing/CallToAction.astro';
+
+const features = [
+  {
+    title: '高速パフォーマンス',
+    description:
+      'Astroの最適化されたビルドプロセスにより、ページの読み込み時間が短縮され、ユーザーエクスペリエンスが向上します。',
+    icon: '🚀',
+  },
+  {
+    title: 'コンポーネントベース',
+    description:
+      '再利用可能なコンポーネントを使用して、効率的かつ一貫性のあるウェブサイトを構築できます。',
+    icon: '🧩',
+  },
+  {
+    title: '複数フレームワーク対応',
+    description:
+      'React、Vue、Svelte、またはプレーンなHTMLとCSSなど、お好みのフレームワークを使用できます。',
+    icon: '🔄',
+  },
+  {
+    title: 'SEOフレンドリー',
+    description:
+      '静的サイト生成により、検索エンジンの最適化が容易になり、より多くの訪問者を獲得できます。',
+    icon: '📊',
+  },
+  {
+    title: 'モダンな開発体験',
+    description:
+      'TypeScriptのサポート、ホットモジュールリロード、組み込みのMarkdownサポートなど、最新の開発ツールを活用できます。',
+    icon: '💻',
+  },
+  {
+    title: '拡張性',
+    description:
+      'プロジェクトの成長に合わせて、必要な機能やインテグレーションを簡単に追加できます。',
+    icon: '📈',
+  },
+];
+---
+
+<MainLayout
+  title="ようこそ | Astroテンプレート"
+  description="高速で拡張性の高いウェブサイトを構築するためのAstroテンプレート"
+>
+  <Hero
+    title="あなたのアイデアを形にする"
+    subtitle="高速、モダン、SEOフレンドリーなWebサイトを簡単に構築できます"
+    ctaText="詳細を見る"
+    ctaUrl="#features"
+    backgroundImage="/images/hero-background.jpg"
+  />
+
+  <Features title="主な特徴" subtitle="このテンプレートの特徴的な機能" features={features} />
+
+  <CallToAction
+    title="今すぐ始めましょう"
+    subtitle="簡単なセットアップで、数分でウェブサイトの構築を開始できます。"
+    buttonText="ドキュメントを見る"
+    buttonUrl="/docs"
+  />
+</MainLayout>
