@@ -38,11 +38,11 @@ Astroプロジェクトの主要なディレクトリ構造は以下の通りで
 
    ```md
    ---
-   title: "新しい記事タイトル"
+   title: '新しい記事タイトル'
    pubDate: 2023-04-01
-   description: "この記事についての短い説明"
-   author: "あなたの名前"
-   tags: ["astro", "web開発", "チュートリアル"]
+   description: 'この記事についての短い説明'
+   author: 'あなたの名前'
+   tags: ['astro', 'web開発', 'チュートリアル']
    ---
 
    # ここから記事の内容を書きます
@@ -65,7 +65,7 @@ Astroプロジェクトの主要なディレクトリ構造は以下の通りで
    ---
    // フロントマター - インポートやJavaScriptコードをここに書きます
    import MainLayout from '../layouts/MainLayout.astro';
-   const pageTitle = "新しいページ";
+   const pageTitle = '新しいページ';
    ---
 
    <MainLayout title={pageTitle}>

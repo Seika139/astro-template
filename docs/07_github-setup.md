@@ -11,7 +11,6 @@
 3. 左側のサイドバーで「General」が選択されていることを確認します
 4. ページを下にスクロールして「Template repository」セクションを見つけます
 5. 「Template repository」のチェックボックスを有効にします
-   ![Template repository設定](https://docs.github.com/assets/cb-27559/mw-1440/images/help/repository/template-repository-checkbox.webp)
 6. 「Save changes」ボタンをクリックして変更を保存します
 
 これにより、リポジトリページに「Use this template」ボタンが表示され、他のユーザーが簡単に新しいプロジェクトを作成できるようになります。
@@ -31,18 +30,18 @@
 
 `.github/workflows/deploy.yml` で使用されるSecrets:
 
-| Secret名 | 説明 | 例 |
-|----------|------|-----|
-| `VPS_HOST` | デプロイ先VPSのホスト名またはIPアドレス | `example.com` または `123.456.789.012` |
-| `VPS_USERNAME` | SSH接続に使用するユーザー名 | `deploy` |
-| `VPS_SSH_KEY` | デプロイ用の秘密SSH鍵（公開鍵はVPSの`authorized_keys`に追加する必要があります） | `-----BEGIN OPENSSH PRIVATE KEY-----\n...\n-----END OPENSSH PRIVATE KEY-----` |
+| Secret名       | 説明                                                                            | 例                                                                            |
+| -------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `VPS_HOST`     | デプロイ先VPSのホスト名またはIPアドレス                                         | `example.com` または `123.456.789.012`                                        |
+| `VPS_USERNAME` | SSH接続に使用するユーザー名                                                     | `deploy`                                                                      |
+| `VPS_SSH_KEY`  | デプロイ用の秘密SSH鍵（公開鍵はVPSの`authorized_keys`に追加する必要があります） | `-----BEGIN OPENSSH PRIVATE KEY-----\n...\n-----END OPENSSH PRIVATE KEY-----` |
 
 ### GitHub Container Registry (GHCR) アクセス用のToken
 
 GitHub ActionsからGHCRにアクセスするために必要なToken:
 
-| Secret名 | 説明 | 備考 |
-|----------|------|-----|
+| Secret名       | 説明                         | 備考                                   |
+| -------------- | ---------------------------- | -------------------------------------- |
 | `GITHUB_TOKEN` | GitHubが自動生成するトークン | 自動的に提供されるため、手動設定は不要 |
 
 ### Secrets設定手順
@@ -57,15 +56,17 @@ GitHub ActionsからGHCRにアクセスするために必要なToken:
 デプロイ用のSSHキーを新規に生成する場合は、以下の手順に従います：
 
 1. ローカル環境で新しいSSHキーペアを生成します：
+
    ```bash
    ssh-keygen -t ed25519 -f deploy_key -C "github-actions-deploy"
    ```
 
 2. 生成された公開鍵（`deploy_key.pub`）の内容をVPSの`~/.ssh/authorized_keys`ファイルに追加します：
+
    ```bash
    # ローカルから
    cat deploy_key.pub | ssh user@vps-host "cat >> ~/.ssh/authorized_keys"
-   
+
    # またはVPS上で直接
    echo "公開鍵の内容" >> ~/.ssh/authorized_keys
    ```
@@ -78,11 +79,13 @@ VPS側では以下の準備が必要です：
 
 1. Dockerがインストールされていることを確認します
 2. デプロイユーザーがDockerコマンドを実行できるように、`docker`グループに追加します：
+
    ```bash
    sudo usermod -aG docker $USER
    ```
 
 3. GitHub Container Registryにアクセスするための認証情報を設定します（初回のみ）：
+
    ```bash
    echo "GITHUB_TOKENの値" | docker login ghcr.io -u GitHubユーザー名 --password-stdin
    ```

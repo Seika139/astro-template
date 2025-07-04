@@ -23,7 +23,6 @@
 2. **VS Codeで開き、Dev Containerで再起動する**
 
    以下のいずれかの方法で、プロジェクトをDev Container内で開きます：
-
    - VS Codeでフォルダを開いた後、右下に表示される通知から「Reopen in Container」を選択
    - コマンドパレット（Cmd/Ctrl+Shift+P）から「Remote-Containers: Reopen in Container」を選択
    - VS Codeの左下の緑色のアイコンをクリックし、「Reopen in Container」を選択
