@@ -88,7 +88,9 @@ Astroプロジェクトの主要なディレクトリ構造は以下の通りで
 
    <div class="card">
      <h2>{title}</h2>
-     <a href={url}>詳細を見る</a>
+     <a href={url.startsWith('/') ? `${import.meta.env.BASE_URL}${url.slice(1)}` : url}
+       >詳細を見る</a
+     >
    </div>
 
    <style>
@@ -107,7 +109,7 @@ Astroプロジェクトの主要なディレクトリ構造は以下の通りで
    import Card from '../components/Card.astro';
    ---
 
-   <Card title="素晴らしい機能" url="/features" />
+   <Card title="素晴らしい機能" url={`${import.meta.env.BASE_URL}features`} />
    ```
 
 ## Astroの詳細情報
@@ -120,3 +122,5 @@ Astroプロジェクトの主要なディレクトリ構造は以下の通りで
 - [MarkdownとMDXのサポート](https://docs.astro.build/ja/guides/markdown-content/)
 
 Astroは直感的なシンタックスと優れたパフォーマンスを提供するフレームワークです。必要に応じてReactやVueなどのUIフレームワークと組み合わせることも可能です。
+
+**注意**: サブディレクトリ運用（GitHub Pages等）では、必ず `import.meta.env.BASE_URL` を使ってリンクや画像パスを生成してください。
