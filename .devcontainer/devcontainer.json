@@ -4,8 +4,10 @@
     "dockerfile": "Dockerfile"
   },
   "features": {},
-  "forwardPorts": [4321],
-  "postCreateCommand": "npx pnpm install",
+  "forwardPorts": [
+    4321
+  ],
+  "postCreateCommand": "npx pnpm install && bash .devcontainer/init-git-user.sh",
   "updateContentCommand": "",
   "customizations": {
     "vscode": {
@@ -22,5 +24,6 @@
       }
     }
   },
-  "remoteUser": "node"
+  "remoteUser": "node",
+  "forwardAgent": true
 }
