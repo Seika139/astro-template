@@ -160,3 +160,37 @@ server {
 ```
 
 ※ この設定はNginxサーバー側で行う必要があります。このリポジトリには含まれていません。
+
+## GitHub Pagesへのデプロイ
+
+このテンプレートリポジトリは、`master`ブランチへのpushまたはmerge時に、GitHub Actionsを利用して自動的にGitHub Pagesへデプロイできます。
+
+### 利用方法
+
+1. リポジトリの「Settings」→「Pages」で、`gh-pages`ブランチの`/`（ルート）を公開対象に設定してください。
+2. `astro.config.mjs`の`site`および`base`は、以下のように設定されています。
+
+   ```js
+   site: "https://Seika139.github.io/astro-template/",
+   base: "/astro-template/",
+   output: "static"
+   ```
+
+3. `master`ブランチにpushまたはPRをmergeすると、自動的に`gh-pages`ブランチに静的ファイルがデプロイされます。
+
+### 注意点
+
+- GitHub Pagesは静的サイトのみ対応しています。Astroの`output: "static"`設定が必要です。
+- サブディレクトリ運用の場合は、`base`オプションも必ず設定してください。
+- デプロイ後、反映まで数分かかる場合があります。
+
+### Astroの`output: "static"`による制限
+
+- サーバーサイド機能（APIエンドポイントやSSR）は利用できません。
+- 動的ルーティング（[slug].astro等）は、`getStaticPaths`で全パスをビルド時に列挙する必要があります。
+- フォーム送信や認証など、サーバー処理が必要な機能は外部サービスを利用してください。
+- WebSocket等のリアルタイム通信は利用できません。
+- 生成された静的ファイルのみがデプロイされます。
+
+#### 参考
+- [Astro公式ドキュメント: 静的サイト生成](https://docs.astro.build/ja/guides/deploy/github/)
