@@ -14,7 +14,7 @@ const { title, url, description, date, tags = [] } = Astro.props;
 
 <div class="blog-card">
   <h3 class="title">
-    <a href={`${import.meta.env.BASE_URL}${url.startsWith('/') ? url.slice(1) : url}`}>{title}</a>
+    <a href={url.startsWith('/') ? `${import.meta.env.BASE_URL}${url.slice(1)}` : url}>{title}</a>
   </h3>
   <div class="metadata">
     <time datetime={date.toString()}>{formatDate(date)}</time>
@@ -32,7 +32,7 @@ const { title, url, description, date, tags = [] } = Astro.props;
   </div>
   <p class="description">{description}</p>
   <a
-    href={`${import.meta.env.BASE_URL}${url.startsWith('/') ? url.slice(1) : url}`}
+    href={url.startsWith('/') ? `${import.meta.env.BASE_URL}${url.slice(1)}` : url}
     class="read-more">続きを読む &rarr;</a
   >
 </div>

@@ -14,7 +14,12 @@ const { title, subtitle, buttonText, buttonUrl, backgroundColor = '#0077cc' } = 
   <div class="cta-content">
     <h2>{title}</h2>
     {subtitle && <p>{subtitle}</p>}
-    <a href={buttonUrl} class="cta-button">{buttonText}</a>
+    <a
+      href={buttonUrl.startsWith('/')
+        ? `${import.meta.env.BASE_URL}${buttonUrl.slice(1)}`
+        : buttonUrl}
+      class="cta-button">{buttonText}</a
+    >
   </div>
 </section>
 

@@ -5,20 +5,21 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
-  
+
   // 全記事から一意のタグを収集
-  const uniqueTags = [...new Set(allPosts.map(post => post.data.tags).flat())];
-  
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
   // 各タグに対するパスを生成
-  return uniqueTags.map(tag => {
+  return uniqueTags.map((tag) => {
     // そのタグを含む記事をフィルタリング
-    const filteredPosts = allPosts.filter(post => 
-      post.data.tags && post.data.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase())
+    const filteredPosts = allPosts.filter(
+      (post) =>
+        post.data.tags && post.data.tags.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
     );
-    
+
     return {
       params: { tag: tag.toLowerCase() },
-      props: { posts: filteredPosts, tag }
+      props: { posts: filteredPosts, tag },
     };
   });
 }
@@ -32,29 +33,34 @@ const sortedPosts = posts.sort(
 );
 ---
 
-<MainLayout title={`${displayTag} に関する記事 | ブログサイト`} description={`${displayTag} タグが付いたすべての記事`}>
+<MainLayout
+  title={`${displayTag} に関する記事 | ブログサイト`}
+  description={`${displayTag} タグが付いたすべての記事`}
+>
   <section class="tag-page">
     <div class="container">
       <h1>タグ: {displayTag}</h1>
-      
+
       <div class="posts-container">
-        {sortedPosts.length > 0 ? (
-          sortedPosts.map(post => (
-            <BlogCard 
-              title={post.data.title} 
-              url={`/blog/${post.slug}`}
-              description={post.data.description}
-              date={post.data.pubDate}
-              tags={post.data.tags}
-            />
-          ))
-        ) : (
-          <p class="no-posts">このタグの記事はまだありません。</p>
-        )}
+        {
+          sortedPosts.length > 0 ? (
+            sortedPosts.map((post) => (
+              <BlogCard
+                title={post.data.title}
+                url={`${import.meta.env.BASE_URL}blog/${post.slug}`}
+                description={post.data.description}
+                date={post.data.pubDate}
+                tags={post.data.tags}
+              />
+            ))
+          ) : (
+            <p class="no-posts">このタグの記事はまだありません。</p>
+          )
+        }
       </div>
-      
+
       <div class="back-to-blog">
-        <a href="/blog" class="back-link">&larr; ブログ一覧に戻る</a>
+        <a href={`${import.meta.env.BASE_URL}blog`} class="back-link">&larr; ブログ一覧に戻る</a>
       </div>
     </div>
   </section>
@@ -64,26 +70,26 @@ const sortedPosts = posts.sort(
   .tag-page {
     margin: 2rem 0 4rem;
   }
-  
+
   .container {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
-  
+
   h1 {
     font-size: 2rem;
     margin-bottom: 2rem;
     border-bottom: 2px solid #eee;
     padding-bottom: 1rem;
   }
-  
+
   .posts-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .no-posts {
     text-align: center;
     padding: 3rem;
@@ -92,12 +98,12 @@ const sortedPosts = posts.sort(
     font-size: 1.2rem;
     color: #666;
   }
-  
+
   .back-to-blog {
     margin-top: 3rem;
     text-align: center;
   }
-  
+
   .back-link {
     font-weight: 500;
     font-size: 1.1rem;

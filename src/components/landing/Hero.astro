@@ -16,12 +16,18 @@ const {
 } = Astro.props;
 ---
 
-<div class="hero" style={`background-image: url(${backgroundImage});`}>
+<div
+  class="hero"
+  style={`background-image: url(${backgroundImage.startsWith('/') ? `${import.meta.env.BASE_URL}${backgroundImage.slice(1)}` : backgroundImage});`}
+>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>{title}</h1>
     <p>{subtitle}</p>
-    <a href={ctaUrl} class="cta-button">{ctaText}</a>
+    <a
+      href={ctaUrl.startsWith('/') ? `${import.meta.env.BASE_URL}${ctaUrl.slice(1)}` : ctaUrl}
+      class="cta-button">{ctaText}</a
+    >
   </div>
 </div>
 

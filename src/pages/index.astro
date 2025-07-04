@@ -16,8 +16,8 @@ const latestPosts = posts
       <h1>ブログサイトへようこそ</h1>
       <p>Astroで構築された高速で最新のブログプラットフォーム</p>
       <div class="cta-buttons">
-        <a href="/blog" class="cta-primary">ブログを読む</a>
-        <a href="/about" class="cta-secondary">詳細を見る</a>
+        <a href={`${import.meta.env.BASE_URL}blog`} class="cta-primary">ブログを読む</a>
+        <a href={`${import.meta.env.BASE_URL}about`} class="cta-secondary">詳細を見る</a>
       </div>
     </div>
   </section>
@@ -30,7 +30,7 @@ const latestPosts = posts
           latestPosts.map((post) => (
             <BlogCard
               title={post.data.title}
-              url={`/blog/${post.slug}`}
+              url={`${import.meta.env.BASE_URL}blog/${post.slug}`}
               description={post.data.description}
               date={post.data.pubDate}
               tags={post.data.tags}
@@ -39,7 +39,9 @@ const latestPosts = posts
         }
       </div>
       <div class="view-all">
-        <a href="/blog" class="view-all-link">すべての記事を見る &rarr;</a>
+        <a href={`${import.meta.env.BASE_URL}blog`} class="view-all-link"
+          >すべての記事を見る &rarr;</a
+        >
       </div>
     </div>
   </section>
