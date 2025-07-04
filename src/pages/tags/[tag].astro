@@ -24,7 +24,6 @@ export async function getStaticPaths() {
   });
 }
 
-const { tag } = Astro.params;
 const { posts, tag: displayTag } = Astro.props;
 
 // 日付順に並べ替え
