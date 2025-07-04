@@ -7,13 +7,14 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   root: true,
-  languageOptions: {
+  parserOptions: {
     ecmaVersion: 2023,
     sourceType: 'module',
-    globals: {
-      browser: true,
-      node: true,
-    },
+  },
+  env: {
+    browser: true,
+    node: true,
+    es2021: true,
   },
   overrides: [
     {
