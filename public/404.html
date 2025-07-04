@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>404 Not Found</title>
+</head>
+<body>
+  <h1>404 - ページが見つかりません</h1>
+  <p>お探しのページは存在しないか、移動または削除された可能性があります。</p>
+  <script>
+    // サブディレクトリ運用時の404リダイレクト
+    if (location.pathname.startsWith('/astro-template/')) {
+      location.replace('/astro-template/');
+    }
+  </script>
+</body>
+</html> 

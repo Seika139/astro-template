@@ -194,3 +194,18 @@ server {
 
 #### 参考
 - [Astro公式ドキュメント: 静的サイト生成](https://docs.astro.build/ja/guides/deploy/github/)
+
+## GitHub Pagesのサブディレクトリ運用時の注意点
+
+GitHub Pagesでサブディレクトリ（例: /astro-template/）運用を行う場合、ページのリロードや直リンクで404エラーが発生することがあります。
+
+### 対策
+- `public/404.html` にリダイレクトスクリプトを追加し、404時はトップページ（/astro-template/）に自動遷移するようにしています。
+- ただし、ユーザー体験向上のため、**サイト内リンクは必ず `Astro.resolve()` を使って baseパス対応のURLを生成してください。**
+
+#### 例: Astro.resolveの使い方
+```astro
+<a href={Astro.resolve('/about')}>About</a>
+```
+
+これにより、baseパスが自動的に付与され、サブディレクトリ運用でも正しく遷移できます。
