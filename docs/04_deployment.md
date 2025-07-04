@@ -163,7 +163,7 @@ server {
 
 ## GitHub Pagesへのデプロイ
 
-このテンプレートリポジトリは、`master`ブランチへのpushまたはmerge時に、GitHub Actionsを利用して自動的にGitHub Pagesへデプロイできます。
+このテンプレートリポジトリは、`main`ブランチへのpushまたはmerge時に、GitHub Actionsを利用して自動的にGitHub Pagesへデプロイできます。
 
 ### 利用方法
 
@@ -176,7 +176,7 @@ server {
    output: "static"
    ```
 
-3. `master`ブランチにpushまたはPRをmergeすると、自動的に`gh-pages`ブランチに静的ファイルがデプロイされます。
+3. `main`ブランチにpushまたはPRをmergeすると、自動的に`gh-pages`ブランチに静的ファイルがデプロイされます。
 
 ### 注意点
 
