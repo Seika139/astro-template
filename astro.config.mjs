@@ -8,7 +8,7 @@ const base = process.env.BASE_PATH || '/';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://Seika139.github.io/astro-template/',
-  base,
+  base: base,
   output: 'static',
   integrations: [sitemap(), react(), tailwind()],
   server: {

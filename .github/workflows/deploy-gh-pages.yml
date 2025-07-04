@@ -23,6 +23,9 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm build
+        env:
+          # GitHub Pages ではベースパスを設定する必要がある
+          BASE_PATH: /astro-template
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
