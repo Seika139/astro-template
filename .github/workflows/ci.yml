@@ -45,7 +45,7 @@ jobs:
         run: pnpm build
 
       - name: Type Check
-        run: pnpm tsc --noEmit
+        run: pnpm tsc --noEmit --project tsconfig.test.json
 
       - name: Lint
         run: pnpm lint

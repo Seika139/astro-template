@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatDate } from '../utils/date';
+import { formatDate } from '../utils/date.js';
 
 describe('formatDate', () => {
   it('日付を正しい形式でフォーマットする', () => {

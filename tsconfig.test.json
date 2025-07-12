@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "types": [
+            "astro/client",
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.astro",
+        "src/test/**/*.ts"
+    ]
+}
