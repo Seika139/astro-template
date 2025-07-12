@@ -8,6 +8,7 @@
 - 複数のテンプレート（ブログ、ポートフォリオ、ランディングページ）
 - React、TailwindCSSとの連携サンプル
 - TypeScriptによる型安全な開発環境
+- **Vitestによるテスト環境（UI、カバレッジ対応）**
 - Dockerを使ったコンテナ化された開発・本番環境
 - VS Code Dev Containersによる一貫した開発環境
 - GitHub Actionsによる自動デプロイフロー
@@ -34,6 +35,34 @@ pnpm dev
 
 詳細な情報は、[docs](./docs)フォルダ内のドキュメントを参照してください。
 
+## 開発コマンド
+
+```bash
+# 開発サーバー起動
+pnpm dev
+
+# ビルド
+pnpm build
+
+# プレビュー
+pnpm preview
+
+# リント
+pnpm lint
+
+# テスト実行
+pnpm test
+
+# テスト（UI）
+pnpm test:ui
+
+# テスト（カバレッジ）
+pnpm test:coverage
+
+# 型チェック
+pnpm tsc --noEmit
+```
+
 ## ドキュメント
 
 - [プロジェクト概要](./docs/01_project-overview.md)
@@ -43,6 +72,7 @@ pnpm dev
 - [テンプレート活用ガイド](./docs/05_templates.md)
 - [継続的な開発とメンテナンス](./docs/06_maintenance.md)
 - [GitHub設定ガイド](./docs/07_github-setup.md)
+- [テストガイド](./docs/08_testing.md)
 
 ## ライセンス
 
