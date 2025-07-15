@@ -55,3 +55,9 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test:run
+
+      - name: Run tests with coverage
+        run: pnpm test:coverage
