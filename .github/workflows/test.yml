@@ -21,8 +21,17 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Extract pnpm version from package.json
+        id: get-pnpm-version
+        run: echo "PNPM_VERSION=$(jq -r '.packageManager' package.json | sed -E 's/pnpm@([0-9.]+)/\1/')" >> $GITHUB_ENV
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Check pnpm version
+        run: pnpm --version
 
       - name: Get pnpm store directory
         shell: bash
