@@ -88,4 +88,4 @@ pnpm tsc --noEmit
 
 ## ライセンス
 
-[MIT](./LICENCE)
+[MIT](./LICENSE)
