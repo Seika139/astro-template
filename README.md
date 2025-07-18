@@ -2,6 +2,18 @@
 
 このリポジトリは、Astroフレームワークを使用したWebサイト開発のためのテンプレートリポジトリです。Docker環境で開発・本番運用できる設定と、GitHub Actionsによる自動デプロイの仕組みが含まれています。
 
+<div align="center">
+  <a href="./LICENSE">
+    <img alt="LICENSE" src="https://img.shields.io/badge/license-MIT-blue.svg">
+  </a>
+  <a href="https://github.com/Seika139/env_loader/actions/workflows/ci.yml">
+    <img alt="CI" src="https://github.com/Seika139/env_loader/actions/workflows/ci.yml/badge.svg">
+  </a>
+  <a href="ttps://img.shields.io/coderabbit/prs/github/Seika139/astro-template?utm_source=oss&utm_medium=github&utm_campaign=Seika139%2Fastro-template&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews">
+    <img alt="CI" src="https://img.shields.io/coderabbit/prs/github/Seika139/astro-template?utm_source=oss&utm_medium=github&utm_campaign=Seika139%2Fastro-template&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews">
+  </a>
+</div>
+
 ## 特徴
 
 - Astroによる高速なサイト構築
@@ -76,4 +88,4 @@ pnpm tsc --noEmit
 
 ## ライセンス
 
-MITライセンス
+[MIT](./LICENCE)
