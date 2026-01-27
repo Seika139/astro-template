@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/astro-template/favicon.svg"><meta name="generator" content="Astro v5.16.15"><title>Astroで高速なWebサイトを構築する方法</title><meta name="description" content="Astroフレームワークを使って高パフォーマンスなWebサイトを構築する基本的な手順を解説します。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://seika139.github.io/astro-template/blog/astro-performance/"><meta property="og:title" content="Astroで高速なWebサイトを構築する方法"><meta property="og:description" content="Astroフレームワークを使って高パフォーマンスなWebサイトを構築する基本的な手順を解説します。"><meta property="og:image" content="/astro-template/images/social-image.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://seika139.github.io/astro-template/blog/astro-performance/"><meta property="twitter:title" content="Astroで高速なWebサイトを構築する方法"><meta property="twitter:description" content="Astroフレームワークを使って高パフォーマンスなWebサイトを構築する基本的な手順を解説します。"><meta property="twitter:image" content="/astro-template/images/social-image.png"><link rel="stylesheet" href="/astro-template/_astro/_slug_.plHq8BDA.css">
+<style>.blog-post[data-astro-cid-bvzihdzo]{margin:2rem 0}.container[data-astro-cid-bvzihdzo]{max-width:800px;margin:0 auto;padding:0 1.5rem}header[data-astro-cid-bvzihdzo]{margin-bottom:2rem}h1[data-astro-cid-bvzihdzo]{font-size:2.5rem;margin-bottom:.5rem;line-height:1.2}.metadata[data-astro-cid-bvzihdzo]{font-size:.9rem;color:#666;margin-bottom:1rem}.tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}.tag[data-astro-cid-bvzihdzo]{background-color:#f1f1f1;padding:.25rem .75rem;border-radius:2rem;font-size:.8rem;color:#333;text-decoration:none;transition:background-color .2s ease}.tag[data-astro-cid-bvzihdzo]:hover{background-color:#e0e0e0}.content[data-astro-cid-bvzihdzo]{line-height:1.7}.content[data-astro-cid-bvzihdzo] h2{margin-top:2rem;margin-bottom:1rem;font-size:1.8rem}.content[data-astro-cid-bvzihdzo] p{margin-bottom:1.5rem}.content[data-astro-cid-bvzihdzo] img{max-width:100%;height:auto;border-radius:.5rem}.content[data-astro-cid-bvzihdzo] blockquote{border-left:4px solid #e0e0e0;padding-left:1rem;margin-left:0;color:#666;font-style:italic}.content[data-astro-cid-bvzihdzo] pre{padding:1rem;border-radius:.5rem;overflow-x:auto}
+</style></head> <body> <header> <nav data-astro-cid-pux6a34n> <div class="nav-container" data-astro-cid-pux6a34n> <div class="logo" data-astro-cid-pux6a34n> <a href="/astro-template/" data-astro-cid-pux6a34n>ブログサイト</a> </div> <div class="hamburger" aria-label="メニュー" data-astro-cid-pux6a34n> <span data-astro-cid-pux6a34n></span> <span data-astro-cid-pux6a34n></span> <span data-astro-cid-pux6a34n></span> </div> <div class="nav-links" data-astro-cid-pux6a34n> <a href="/astro-template/" class data-astro-cid-pux6a34n> ホーム </a><a href="/astro-template/blog" class data-astro-cid-pux6a34n> ブログ </a><a href="/astro-template/portfolio" class data-astro-cid-pux6a34n> ポートフォリオ </a><a href="/astro-template/landing" class data-astro-cid-pux6a34n> ランディング </a><a href="/astro-template/react-tailwind-demo" class data-astro-cid-pux6a34n> React Demo </a><a href="/astro-template/about" class data-astro-cid-pux6a34n> About </a> </div> </div> </nav> <script type="module">document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".hamburger"),t=document.querySelector(".nav-links");e?.addEventListener("click",()=>{e.classList.toggle("active"),t.classList.toggle("active")})});</script>  </header> <main>  <article class="blog-post" data-astro-cid-bvzihdzo> <div class="container" data-astro-cid-bvzihdzo> <header data-astro-cid-bvzihdzo> <h1 data-astro-cid-bvzihdzo>Astroで高速なWebサイトを構築する方法</h1> <div class="metadata" data-astro-cid-bvzihdzo> <time datetime="Sun Jun 15 2025 00:00:00 GMT+0000 (Coordinated Universal Time)" data-astro-cid-bvzihdzo> 2025年6月15日 </time> <span data-astro-cid-bvzihdzo> | 山田 太郎</span> </div> <div class="tags" data-astro-cid-bvzihdzo> <a href="/astro-template/tags/astro" class="tag" data-astro-cid-bvzihdzo> Astro </a><a href="/astro-template/tags/パフォーマンス" class="tag" data-astro-cid-bvzihdzo> パフォーマンス </a><a href="/astro-template/tags/チュートリアル" class="tag" data-astro-cid-bvzihdzo> チュートリアル </a> </div> </header> <div class="content" data-astro-cid-bvzihdzo>  <p>Astroは、コンテンツ重視のWebサイト構築のために設計された最新のWebフレームワークです。「アイランドアーキテクチャ」と呼ばれるアプローチを採用しており、クライアント側のJavaScriptを最小限に抑えることで、非常に高速なWebサイトを構築できます。</p>
+<h2 id="astroの特長">Astroの特長</h2>
+<p>Astroには以下のような特長があります：</p>
+<ol>
+<li><strong>デフォルトでゼロJavaScript</strong> - 必要な部分だけをハイドレーションできます</li>
+<li><strong>コンポーネントアイランド</strong> - 複数のUIフレームワークを混在させることが可能</li>
+<li><strong>サーバーファーストAPI設計</strong> - リクエスト時にHTML生成を行います</li>
+<li><strong>デフォルトでSSR/SSG</strong> - 最適なレンダリング戦略を自動選択</li>
+<li><strong>優れた開発者体験</strong> - TypeScript、ホットモジュールリプレイスメントなど</li>
+</ol>
+<h2 id="はじめ方">はじめ方</h2>
+<p>Astroプロジェクトを始めるには、まず新しいプロジェクトを作成します：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># npm</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> astro@latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># pnpm</span></span>
+<span class="line"><span style="color:#B392F0">pnpm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> astro@latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># yarn</span></span>
+<span class="line"><span style="color:#B392F0">yarn</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> astro</span></span></code></pre>
+<p>プロジェクトが作成されたら、開発サーバーを起動できます：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> dev</span></span></code></pre>
+<h2 id="ページとルーティング">ページとルーティング</h2>
+<p>Astroでは、ファイルベースのルーティングを使用します。<code>src/pages</code>ディレクトリに<code>.astro</code>、<code>.md</code>、<code>.mdx</code>ファイルを配置すると、自動的にルートとして認識されます。</p>
+<p>例えば：</p>
+<ul>
+<li><code>src/pages/index.astro</code> → <code>/</code></li>
+<li><code>src/pages/about.astro</code> → <code>/about</code></li>
+<li><code>src/pages/blog/index.astro</code> → <code>/blog</code></li>
+<li><code>src/pages/blog/[slug].astro</code> → <code>/blog/:slug</code>（動的ルート）</li>
+</ul>
+<h2 id="コンポーネントの作成">コンポーネントの作成</h2>
+<p>Astroコンポーネントは、HTMLに似た構文を使用します：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#6A737D">// フロントマター - JavaScriptコード</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> title</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "私のAstroサイト"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">&#x3C;!-- HTMLテンプレート --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>{title}&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">slot</span><span style="color:#E1E4E8"> /> </span><span style="color:#6A737D">&#x3C;!-- 子コンポーネントが挿入される場所 --></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#6A737D">  /* スコープ付きCSS */</span></span>
+<span class="line"><span style="color:#85E89D">  h1</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h2 id="パフォーマンス最適化のヒント">パフォーマンス最適化のヒント</h2>
+<p>Astroで構築するWebサイトをさらに高速化するためのヒントをいくつか紹介します：</p>
+<h3 id="1-画像の最適化">1. 画像の最適化</h3>
+<p>Astro Image統合を使用して、画像を最適化しましょう：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> @astrojs/image</span></span></code></pre>
+<p>そして、<code>astro.config.mjs</code>に追加します：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> image </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@astrojs/image'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  integrations: [</span><span style="color:#B392F0">image</span><span style="color:#E1E4E8">()],</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h3 id="2-必要な部分だけjavascriptを使用する">2. 必要な部分だけJavaScriptを使用する</h3>
+<p>Reactなどのフレームワークコンポーネントを使用する場合は、必要な部分だけクライアントでハイドレーションするよう指定できます：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">ReactComponent</span><span style="color:#B392F0"> client:load</span><span style="color:#E1E4E8"> /> </span><span style="color:#6A737D">&#x3C;!-- ページロード時にすぐハイドレーション --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">ReactComponent</span><span style="color:#B392F0"> client:idle</span><span style="color:#E1E4E8"> /> </span><span style="color:#6A737D">&#x3C;!-- ブラウザのアイドル時にハイドレーション --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">ReactComponent</span><span style="color:#B392F0"> client:visible</span><span style="color:#E1E4E8"> /> </span><span style="color:#6A737D">&#x3C;!-- 要素が表示されたときにハイドレーション --></span></span></code></pre>
+<h3 id="3-コンテンツのプリロード">3. コンテンツのプリロード</h3>
+<p>ユーザーが訪問する可能性が高いページへのリンクをプリロードします：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"preload"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"/fonts/custom-font.woff2"</span><span style="color:#B392F0"> as</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"font"</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"font/woff2"</span><span style="color:#B392F0"> crossorigin</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h2 id="まとめ">まとめ</h2>
+<p>Astroは、高速でSEOに優れたWebサイトを構築するための優れたフレームワークです。「アイランドアーキテクチャ」を活用することで、必要最小限のJavaScriptでWebサイトを構築でき、優れたユーザー体験を提供できます。</p>
+<p>詳細については、<a href="https://docs.astro.build/ja/getting-started/">Astro公式ドキュメント</a>を参照してください。</p>  </div> </div> </article>  </main> <footer> <div class="footer-content"> <p>&copy; 2026 ブログサイト. All rights reserved.</p> <div class="social-links"> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a> </div> </div> </footer> </body></html> 
