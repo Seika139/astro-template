@@ -25,7 +25,7 @@ const allTags = [...new Set(posts.map((post) => post.data.tags).flat())].sort();
               sortedPosts.map((post) => (
                 <BlogCard
                   title={post.data.title}
-                  url={`/blog/${post.id}`}
+                  url={`/blog/${post.data.slug ?? post.id}`}
                   description={post.data.description}
                   date={post.data.pubDate}
                   tags={post.data.tags}

@@ -30,7 +30,7 @@ const latestPosts = posts
           latestPosts.map((post) => (
             <BlogCard
               title={post.data.title}
-              url={`${import.meta.env.BASE_URL}blog/${post.id}`}
+              url={`/blog/${post.data.slug ?? post.id}`}
               description={post.data.description}
               date={post.data.pubDate}
               tags={post.data.tags}
